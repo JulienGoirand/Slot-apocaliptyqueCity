@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Bangers&display=swap');
+
+/* Police pour les gains */
+.gain-text {
+    font-family: 'Bangers', cursive;
+    font-size: 2em;
+    color: rgb(77, 255, 0);
+    text-shadow: 2px 2px 4px #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fadeInOut 2s forwards;
+    z-index: 100;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse-animation {
+    animation: pulse 1s infinite;
+}
+
+/* Overlay styles */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay-content {
+    background: url('fondo.jpg') no-repeat center center; /* Remplacez la couleur de fond par l'image */
+    background-size: cover; /* L'image couvre tout l'espace */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 600px;
+    width: 900%;
+    height: 20%;
+}
+
+.overlay-content h1 {
+    margin-top: 0;
+}
+
+.bonne-chance-button,
+.start-bonus-button,
+.continue-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Style général */
+body {
+    font-family: 'Permanent Marker', cursive;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('background.mp4') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100; /* Ensure it is above the center image */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 100px); /* 5 columns with smaller width */
+    grid-template-rows: repeat(4, 100px); /* 4 rows with smaller height */
+    gap: 40px;
+    margin: 50px;
+    z-index: 99;
+    
+}
+
+.cell {
+    width: 125px; /* Reduced width */
+    height: 125px; /* Reduced height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    font-size: 2em;
+    color: #000;
+    position: relative; /* to position images inside */
+    overflow: hidden; /* hide overflow for animation */
+    top: 140%;
+    left: -20%;
+}
+
+.cell img {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backface-visibility: hidden;
+    z-index: 99;
+}
+
+.cell.flipping img {
+    animation: flipIn 0.5s forwards;
+}
+
+@keyframes flipIn {
+    0% {
+        transform: translate(-50%, -50%) rotateY(90deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotateY(0deg);
+    }
+}
+
+@keyframes flipOut {
+    0% {
+        transform: translate(-50%, -50%) rotateY(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotateY(90deg);
+    }
+}
+
+.highlight {
+    background-color: yellow;
+    border: 2px solid red;
+    z-index: 101;
+}
+
+.side-wheels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.left {
+    position: absolute;
+    left: -200px;
+}
+
+.right {
+    position: absolute;
+    right: -200px;
+}
+
+.wheel {
+    width: 150px;
+    height: 150px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    color: #fff;
+    position: absolute; /* Changed from relative to absolute for positioning */
+    margin: 20px;
+    transition: transform 3s ease-out;
+    z-index: 99;
+}
+
+/* Positioning for the first set of wheels on the left */
+#wheel1 {
+    top: -1.1%; /* Adjust the top position */
+    left: 145px; /* Adjust the left position */
+}
+
+#wheel2 {
+    top: 76%; /* Adjust the top position */
+    left: 145px; /* Adjust the left position */
+}
+
+/* Positioning for the second set of wheels on the right */
+#wheel3 {
+    top: -1.2%; /* Adjust the top position */
+    right: 150px; /* Adjust the right position */
+}
+
+#wheel4 {
+    top: 76.2%; /* Adjust the top position */
+    right: 152px; /* Adjust the right position */
+}
+
+.wheel-number {
+    position: absolute;
+    font-size: 1.5em;
+}
+
+.wheel-number:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+.wheel-number:nth-child(2) { top: 50%; right: 0; transform: translateY(-50%); }
+.wheel-number:nth-child(3) { bottom: 0; left: 50%; transform: translateX(-50%); }
+.wheel-number:nth-child(4) { top: 50%; left: 0; transform: translateY(-50%); }
+
+.bottom-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 150px;
+}
+
+.capsule {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    background-color: #000000;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    top : 500px;
+}
+
+.balance, .last-gain, .spin-button, .bet-adjustment span {
+    font-size: 1.5em;
+    color: #fff;
+    top : 500px;
+    width: 60%;
+}
+
+.bet-adjustment {
+    display: flex;
+    align-items: center;
+}
+
+.bet-adjustment button {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #fff;
+    background-color: #555;
+    border: none;
+    margin: 0 5px;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.spin-button, .auto-spin-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #555;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5em;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.wheel::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 500%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-left-color: #000;
+    transform: translate(-50%, -50%);
+}
+
+.splash {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: url('54.png') no-repeat center center;
+    background-size: contain;
+    animation: splashAnimation 0.1s forwards;
+    z-index: 100;
+}
+
+@keyframes splashAnimation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.music-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.bonus-panel {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    color: #fff;
+}
+
+.bonus-panel .wheel {
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    transition: transform 3s ease-out;
+}
+
+.bonus-panel .wheel-number {
+    font-size: 1.2em;
+}
+
+.video-left {
+    position: absolute;
+    left: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1000px; /* Adjust as needed */
+    height: 500px;
+    z-index: 2;
+}
+
+.center-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5; /* Positionnez cette image sous le reste des éléments */
+    pointer-events: none; /* S'assurer que l'image ne gêne pas l'interaction avec les autres éléments */
+    width: 1000px; /* Adjust as needed */
+    height: 1000px;
+}
+.bonus-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}

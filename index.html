@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apocalypse Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background">
+        <img src="contour.png" class="center-image" alt="Contour">
+        <div class="container">
+            <video id="squelVideo" class="video-left" src="squel.MOV" autoplay loop muted></video>
+            <div class="side-wheels left">
+                <div class="wheel" id="wheel1">
+                    <div class="wheel-number">2x</div>
+                    <div class="wheel-number">1.7x</div>
+                    <div class="wheel-number">2x</div>
+                    <div class="wheel-number">4x</div>
+                </div>
+                <div class="wheel" id="wheel2">
+                    <div class="wheel-number">1.5x</div>
+                    <div class="wheel-number">3x</div>
+                    <div class="wheel-number">5x</div>
+                    <div class="wheel-number">10x</div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+                <div class="cell" data-index="9"></div>
+                <div class="cell" data-index="10"></div>
+                <div class="cell" data-index="11"></div>
+                <div class="cell" data-index="12"></div>
+                <div class="cell" data-index="13"></div>
+                <div class="cell" data-index="14"></div>
+                <div class="cell" data-index="15"></div>
+                <div class="cell" data-index="16"></div>
+                <div class="cell" data-index="17"></div>
+                <div class="cell" data-index="18"></div>
+                <div class="cell" data-index="19"></div>
+            </div>
+            <div class="side-wheels right">
+                <div class="wheel" id="wheel3">
+                    <div class="wheel-number">2x</div>
+                    <div class="wheel-number">7x</div>
+                    <div class="wheel-number">9x</div>
+                    <div class="wheel-number">11x</div>
+                </div>
+                <div class="wheel" id="wheel4">
+                    <div class="wheel-number">10x</div>
+                    <div class="wheel-number">20x</div>
+                    <div class="wheel-number">50x</div>
+                    <div class="wheel-number">100x</div>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <div class="capsule">
+                    <div class="balance">Balance: <span id="balance">10000.00</span>€</div>
+                    <div class="last-gain">Gain: <span id="lastGain">0.00</span>€</div>
+                    <div class="bet-adjustment">
+                        <button id="decreaseBet">-</button>
+                        <span id="bet">10.00</span>€
+                        <button id="increaseBet">+</button>
+                    </div>
+                    <button id="spinButton" class="spin-button">Spin</button>
+                </div>
+                <button id="autoSpinButton" class="auto-spin-button">Auto Spin</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay for ApocaWheels Bonus -->
+    <div id="bonusOverlay" class="overlay" style="display: none;">
+        <div class="overlay-content">
+            <h1 id="bonusTitle">ApocaWheels Bonus</h1>
+            <p id="bonusSpinsText">Vous avez gagné <span id="bonusSpins">0</span> spins gratuits !</p>
+            <button class="start-bonus-button">Commencer</button>
+        </div>
+    </div>
+
+    <!-- Button to activate bonus directly -->
+    <button id="bonusButton" class="bonus-button">Bonus</button>
+
+    <!-- Button to play music -->
+    <button id="playMusicButton" class="music-button">Play Music</button>
+
+    <audio id="ambianceMusic" src="audio/ambiance.mp3" loop></audio>
+    <audio id="gunSound" src="audio/pistolet.mp3"></audio>
+    <audio id="spinSound" src="audio/spin.mp3"></audio>
+    <audio id="gainSound" src="audio/gain.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
